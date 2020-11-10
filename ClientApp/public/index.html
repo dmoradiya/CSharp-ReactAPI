@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
@@ -21,10 +21,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>APIProject</title>
-  </head>
-  <body>
+</head>
+<!--
+        React Notes:
+        1) Index.js identifies the root element of the page in which to render. Then ReactDOM.render is called therein which calls all other components. (Starting with App)
+        2) App.js  will reference the various Routes and render the component in question based on our current path in a Layout component. (Root would be Home, /counter would be Counter, etc)
+        3) The components/Layout.js file will take care of the page layout, including the NavMenu, and render the main component as well.
+        3a) components/Home.js contains the JSX to render the home page.
+        3b) components/Counter.js contains the JSX and methods to render our counter page.
+        3c) components/FetchData.js contains the JSX and methods to render our API output.
+    -->
+<body>
     <noscript>
-      You need to enable JavaScript to run this app.
+        You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
     <!--
@@ -37,5 +46,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
 </html>
