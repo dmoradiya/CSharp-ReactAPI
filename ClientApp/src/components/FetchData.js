@@ -5,30 +5,26 @@ function FetchData(props) {
     const displayName = FetchData.name;
 
     // Configure our state, and our setState standin methods.
-    const [forecasts, setForecasts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     // Build the table based on forecast data.
-    function renderForecastsTable(forecasts) {
+    function renderProductsTable(products) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Precipitation</th>
-                        <th>Summary</th>
+                        <th>Product ID</th>
+                        <th>Category Name</th>
+                        <th>Product Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {forecasts.map(forecast =>
-                        <tr key={forecast.date}>
-                            <td>{forecast.date}</td>
-                            <td>{forecast.temperatureC}</td>
-                            <td>{forecast.temperatureF}</td>
-                            <td>{forecast.precipitation}</td>
-                            <td>{forecast.summary}</td>
+                    {products.map(product =>
+                        <tr key={product.id}>
+                           
+                            <td>{product.categoryID}</td>
+                           
                         </tr>
                     )}
                 </tbody>
@@ -37,24 +33,24 @@ function FetchData(props) {
     }
 
     // Grab our data from our API.
-    async function populateWeatherData() {
+    async function populateProductData() {
         // npm install --save axios
-        const response = await axios.get('weatherforecast');
-        setForecasts(response.data);
+        const response = await axios.get('ProductAPI/All');
+        setProducts(response.data);
         setLoading(false);
     }
 
     useEffect(() => {
-        populateWeatherData();
+        populateProductData();
     }, [loading]);
 
     let contents = loading
         ? <p><em>Loading...</em></p>
-        : renderForecastsTable(forecasts);
+        : renderProductsTable(products);
 
     return (
         <div>
-            <h1 id="tabelLabel" >Weather forecast</h1>
+            <h1 id="tabelLabel" >Products</h1>
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
 
@@ -64,4 +60,3 @@ function FetchData(props) {
 }
 
 export { FetchData };
-
